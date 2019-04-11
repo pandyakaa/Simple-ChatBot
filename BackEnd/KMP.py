@@ -3,7 +3,7 @@ from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFacto
 
 # Sebelum dijalankan, akan melakukan pre-processing dengan menyiapkan KMP Border Function
 # Digunakan untuk mencari suffix yang juga prefix dari sebuah string
-def KMPsp(pat) :
+def preKMP(pat) :
     temp = 0
 
     res = [0] * len(pat)
@@ -29,7 +29,7 @@ def KMP(pat,txt) :
     m = len(pat)
     n = len(txt)
 
-    res = KMPsp(pat)
+    res = preKMP(pat)
 
     i = 0
     j = 0
@@ -50,6 +50,31 @@ def KMP(pat,txt) :
     
     return 0
 
+def subsKMP(pat,txt) :
+    substring = ''
+    i = 0
+    temp = 0
+
+    if (pat[len(pat)-1] != ' ') :
+        pat = pat + ' '
+
+    if (txt[len(txt)-1] != ' ') :
+        txt = txt + ' '
+
+    while ( i < len(pat) ) :
+        if (pat[i] != ' ') :
+            substring = substring + pat[i]
+        else :
+            substring = substring + ' '
+            if (KMP(substring,txt) > 0) :
+                temp = temp + len(substring)
+            substring = ''
+        i = i + 1
+
+    final = float(temp/len(txt))*100
+
+    return final
+    
 # Fungsi untuk generate stopwords
 def generateStopWords(pat,txt) :
     # Ambil Stopword bawaan
@@ -65,7 +90,7 @@ def generateStopWords(pat,txt) :
     return str.remove(pat),str.remove(txt)
 
 # Main Programs
-txt = "Apa ibukota negara Filipina?"
-pat = "Apa ibukota Filipina?"
-pat,txt = generateStopWords(pat,txt)
-print(KMP(pat,txt))
+txt = "Apa ibukota negara Filipina ?"
+pat = "Apa ibukota Filipina ?"
+generateStopWords(pat,txt)
+print(subsKMP(pat,txt))
