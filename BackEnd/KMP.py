@@ -65,7 +65,8 @@ def subsKMP(pat,txt) :
         if (pat[i] != ' ') :
             substring = substring + pat[i]
         else :
-            substring = substring + ' '
+            if ( i != len(pat) - 1) :
+                substring = substring + ' '
             if (KMP(substring,txt) > 0) :
                 temp = temp + len(substring)
             substring = ''
@@ -79,18 +80,17 @@ def subsKMP(pat,txt) :
 def generateStopWords(pat,txt) :
     # Ambil Stopword bawaan
     stop_factory = StopWordRemoverFactory().get_stop_words()
-    more_stopword = ['?']
-    
+    more_stopwords = [' ?' , '?']
     # Merge stopword
-    data = stop_factory + more_stopword
-    
+    data = stop_factory + more_stopwords
+
     dictionary = ArrayDictionary(data)
     str = StopWordRemover(dictionary)
 
     return str.remove(pat),str.remove(txt)
 
 # Main Programs
-txt = "Apa ibukota negara Filipina ?"
-pat = "Apa ibukota Filipina ?"
-generateStopWords(pat,txt)
-print(subsKMP(pat,txt))
+txt = "Apakah chatbot itu manusia ?"
+pat = "Apakah chatbot ?"
+pat,txt = generateStopWords(pat,txt)
+print(max(KMP(pat,txt),subsKMP(pat,txt)))
