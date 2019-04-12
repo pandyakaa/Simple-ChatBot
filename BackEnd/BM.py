@@ -2,7 +2,7 @@
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory, StopWordRemover, ArrayDictionary
 
 NumberOfChar = 256
-# Sebelum dijalankan, akan melakukan pre-processing dengan menyiapkan KMP Border Function
+# Sebelum dijalankan, akan melakukan pre-processing dengan menyiapkan BM table
 # Digunakan untuk mencari index terakhir dari char yang ada di pattern
 def preBM(pat) :
     res = [-1] * NumberOfChar
@@ -59,7 +59,7 @@ def subsBM(pat,txt) :
     final = float(temp/len(txt))*100
 
     return final
-    
+
 # Fungsi untuk generate stopwords
 def generateStopWords(pat,txt) :
     # Ambil Stopword bawaan
