@@ -1,57 +1,40 @@
-# Program untuk striing matching dengan menggunakan algoritma KMP
+# Program untuk string matching dengan menggunakan Boyer-Moore Algorithm
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory, StopWordRemover, ArrayDictionary
 
+NumberOfChar = 256
 # Sebelum dijalankan, akan melakukan pre-processing dengan menyiapkan KMP Border Function
-# Digunakan untuk mencari suffix yang juga prefix dari sebuah string
-def preKMP(pat) :
-    temp = 0
+# Digunakan untuk mencari index terakhir dari char yang ada di pattern
+def preBM(pat) :
+    res = [-1] * NumberOfChar
 
-    res = [0] * len(pat)
-    i = 1
-
-    while ( i < len(pat) ) :
-        if (pat[temp] == pat[i]) : 
-            temp = temp + 1
-            res[i] = temp
-            i = i + 1
-        else :
-            if ( temp != 0 ) :
-                temp = res[temp-1]
-            else :
-                res[i] = 0
-                i = i + 1
+    for i in range(len(pat)) :
+        res[ord(pat[i])] = i
     
     return res
 
-# Algoritma KMP, memanfaatkan prekomputasi sebelumnya
-def KMP(pat,txt) :
-
+# Algoritma BM, memanfaatkan prekomputasi sebelumnya
+def BM(pat,txt) :
     m = len(pat)
     n = len(txt)
 
-    res = preKMP(pat)
+    res = preBM(pat)
 
-    i = 0
-    j = 0
+    s = 0
+    while(s <= n-m): 
+        j = m-1
+  
+        while (j>=0 and pat[j] == txt[s+j]) : 
+            j = j - 1
 
-    while ( i < n ) :
-        if (pat[j] == txt[i]) :
-            i = i + 1
-            j = j + 1
-
-        if ( j == m ) :
-            return float(m/n*100)
-
-        elif i < n and pat[j] != txt[i]: 
-            if ( j != 0 ) : 
-                j = res[j-1] 
-            else: 
-                i = i + 1
+        if (j<0): 
+            return float(m/n*100) 
+        else: 
+            s = s + max(1, j-res[ord(txt[s+j])]) 
     
     return 0
 
-# Fungsi untuk menghitung persentasi substring yang sama antara pattern dengan txt
-def subsKMP(pat,txt) :
+# Fungsi untuk menghitung substring yang sama antara pattern dengan text
+def subsBM(pat,txt) :
     substring = ''
     i = 0
     temp = 0
@@ -68,7 +51,7 @@ def subsKMP(pat,txt) :
         else :
             if ( i != len(pat) - 1) :
                 substring = substring + ' '
-            if (KMP(substring,txt) > 0) :
+            if (BM(substring,txt) > 0) :
                 temp = temp + len(substring)
             substring = ''
         i = i + 1
@@ -95,4 +78,4 @@ if __name__ == "__main__":
     txt = "Apa ibukota negara Filipina?"
     pat = "Apa ibukota Filipina?"
     pat,txt = generateStopWords(pat,txt)
-    print(max(KMP(pat,txt),subsKMP(pat,txt)))
+    print(subsBM(pat,txt))
