@@ -1,6 +1,7 @@
 from KMP import KMPmain
 from regex import regexmain
 from BM import BMmain
+import random
 
 def readData() :
 
@@ -25,6 +26,23 @@ def readData() :
 
     return mat
 
+def randomQuest(ask,res,method) :
+    max = 0
+    temp = random.randint(0,len(res)-1)
+    arrq = []
+    for i in range(len(res)) :
+        if (method(ask,res[i][0]) > max ) :
+            max = method(ask,res[i][0])
+            arrq.append(i)
+    
+    print("Mungkin maksud Anda : ")
+    if (len(arrq) != 0) :
+        for i in range(len(arrq)) :
+            if ( i < 3 ) :
+                print(str(i+1) + ". " + res[arrq[i]][0])
+    else :
+        print(res[temp][0])
+
 if __name__ == "__main__":
 
     res = readData()
@@ -39,7 +57,7 @@ if __name__ == "__main__":
             foundKMP = True
     
     if (not(foundKMP)) :
-        print("KMP Not Found")
+        randomQuest(ask,res,KMPmain)
     
     for i in range(len(res)) :
         if (BMmain(ask,res[i][0]) > 50 and not(foundBM)) :
@@ -47,7 +65,7 @@ if __name__ == "__main__":
             foundBM = True
     
     if (not(foundBM)) :
-        print("BM Not Found")
+        randomQuest(ask,res,BMmain)
     
     for i in range(len(res)) :
         if (regexmain(ask,res[i][0]) and not(foundregex)) :
