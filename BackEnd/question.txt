@@ -1,0 +1,4 @@
+Siapa namamu ?
+Siapa kamu ?
+Kamu dibuat oleh siapa ?
+Tanggal berapa kamu lahir ?

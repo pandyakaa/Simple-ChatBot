@@ -90,6 +90,15 @@ def generateStopWords(pat,txt) :
 
     return str.remove(pat),str.remove(txt)
 
+# Fungsi yang akan dipanggil
+def KMPmain(pat,txt) :
+
+    pat,txt = generateStopWords(pat,txt)
+    if (KMP(pat,txt) != 0 ) :
+        return KMP(pat,txt)
+    else : 
+        return subsKMP(pat,txt)
+        
 # Main Programs
 if __name__ == "__main__":
     txt = "Apa ibukota negara Filipina?"

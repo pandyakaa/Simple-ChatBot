@@ -73,6 +73,14 @@ def generateStopWords(pat,txt) :
 
     return str.remove(pat),str.remove(txt)
 
+# Fungsi yang akan dipanggil
+def BMmain(pat,txt) :
+    pat,txt = generateStopWords(pat,txt)
+    if (BM(pat,txt) != 0) :
+        return (BM(pat,txt))
+    else :
+        return (subsBM(pat,txt))
+
 # Main Programs
 if __name__ == "__main__":
     txt = "Apa ibukota negara Filipina?"
