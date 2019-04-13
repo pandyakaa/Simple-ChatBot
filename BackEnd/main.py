@@ -1,5 +1,5 @@
 from KMP import KMPmain
-from regex import *
+from regex import regexmain
 from BM import BMmain
 
 def readData() :
