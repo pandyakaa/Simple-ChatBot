@@ -2,3 +2,9 @@ Siapa namamu ?
 Siapa kamu ?
 Kamu dibuat oleh siapa ?
 Tanggal berapa kamu lahir ?
+Apa yang bisa kamu lakukan ?
+Apa itu python ?
+Kenapa python ?
+Bagaimana cara menginstall python ?
+Bagaimana cara menggunakan python ?
+Apa saja tipe data dalam python ?
