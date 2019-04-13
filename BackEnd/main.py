@@ -17,7 +17,6 @@ def readData() :
         for words in x :
             ans.append(words.strip())
         
-
     mat = [ [] for i in range(len(x))]
 
     for i in range(len(x)) :
