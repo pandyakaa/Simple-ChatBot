@@ -41,29 +41,50 @@
                     <label for="output">CHATBOX</label>
                     <div class="outbox">
                         <?php
+                            $idx = 0;
+                            $arruser = array();
+                            $arrhasil = array();
                             $url = 'http://127.0.0.1:5000/';
                             if (isset($_POST['inputbox']) )
                                 {
-                                    tembak($url,$_POST);
+                                    $res = findAnswer($url,$_POST);
+                                    $arrhasil[$idx] = $res;
+                                    $arruser[$idx] = $_POST['inputbox'];
+                                    $idx++;
+                                    printAnswer($arruser,$arrhasil);
                                 }
 
-                            function tembak($url,$data) {
-                                $ch = curl_init($url);
+                            function findAnswer($url,$data) 
+                                {
+                                    $ch = curl_init($url);
 
-                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-                                curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+                                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
-                                $getres = curl_exec($ch); // Masih dalam bentuk json
+                                    $getres = curl_exec($ch); // Masih dalam bentuk json
 
-                                curl_close($ch);
-                                
-                                $finalx = json_decode($getres);
-                                echo "User : ";
-                                echo $_POST['inputbox'];
-                                echo "<br>";
-                                echo "Cha Cha : ";
-                                echo $finalx->data;
-                            }
+                                    curl_close($ch);
+                                    
+                                    $finalx = json_decode($getres);
+
+                                    return $finalx;
+                                }
+                            
+                            function printAnswer($arr1,$arr2)
+                                {
+                                    for ($x = 0 ; $x < count($arr1) ; $x++)
+                                        {
+                                            echo "User : ";
+                                            echo $arr1[$x];
+                                            echo "<br>";
+                                            echo "Cha Cha : ";
+                                            if (!empty($arr2[$x]->data))
+                                                {
+                                                    echo $arr2[$x]->data;
+                                                    echo "<br>";
+                                                }
+                                        }
+                                }
                         ?>
                     </div>
                     <br>

@@ -30,22 +30,24 @@ def randomQuest(ask,res,method) :
     temp = random.randint(0,len(res)-1)
     arrq = []
     for i in range(len(res)) :
-        if (method(ask,res[i][0]) > max ) :
+        if (method(ask,res[i][0]) > 30 ) :
             max = method(ask,res[i][0])
             arrq.append(i)
-    
-    print("Mungkin maksud Anda : ")
+
+    tempres = [" "," "," "]
+
     if (len(arrq) != 0) :
         for i in range(len(arrq)) :
             if ( i < 3 ) :
-                print(str(i+1) + ". " + res[arrq[i]][0])
-    else :
-        print(res[temp][0])
+                tempres[i] = (str(i+1) + ". " + res[arrq[i]][0])
+        
+        return ("Mungkin maksud kamu = " + tempres[0] + " " + tempres[1] + " " + tempres[2])
+    else : 
+        return ("Mungkin maksud kamu = " + res[temp][0])
 
 def randomQRegex(ask,res) :
     temp = random.randint(0,len(res)-1)
-    print("Mungkin maksud Anda : ")
-    print(res[temp][0])
+    return ("Mungkin maksud kamu = " + res[temp][0])
 
 def askMain(pat,res,method) :
 
@@ -55,19 +57,19 @@ def askMain(pat,res,method) :
 
     if (method == 'KMP') :
         for i in range(len(res)) :
-            if (KMPmain(pat,res[i][0]) > 50 and not(foundKMP)) :
+            if (KMPmain(pat,res[i][0]) > 70 and not(foundKMP)) :
                 return (res[i][1])
 
         if (not(foundKMP)) :
-            randomQuest(pat,res,KMPmain)
+            return randomQuest(pat,res,KMPmain)
     
     elif (method == 'BM') :
         for i in range(len(res)) :
-            if (BMmain(pat,res[i][0]) > 50 and not(foundBM)) :
+            if (BMmain(pat,res[i][0]) > 70 and not(foundBM)) :
                 return (res[i][1])
         
         if (not(foundBM)) :
-            randomQuest(pat,res,BMmain)
+            return randomQuest(pat,res,BMmain)
     
     else :
         for i in range(len(res)) :
@@ -75,5 +77,5 @@ def askMain(pat,res,method) :
                 return (res[i][1])
         
         if (not(foundregex)) :
-            randomQRegex(pat,res)
+            return randomQRegex(pat,res)
     
