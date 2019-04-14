@@ -13,43 +13,72 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
 	<script src="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
+
 <body>
     <div class = "container">
-        <h1 class = "text-center"> 
-            Cha-Cha ChatBot 1.0 
-        </h1>
+
+        <div class="jumbotron">
+            <h1 class="display-3">Cha Cha ChatBot</h1>
+            <p class="lead"></p>Oleh : IP 4 Menanti</p>
+        </div>
 
         <div class="row">
             <form action="<?php $_PHP_SELF ?>" method="POST">
-                    <label for="inputchat">Input chat:</label>
-					<input type="text" class="form-control" placeholder="input here.." id="input" name="inputbox">
-					<br>
-            </form>
+
+                <div class="col-md-4 col-sm-4">
+                    <label for="algorithmsel">Algorithm</label>
+                    <select class="select" id="select" form="main-form" name="algorithm">
+						<option>Boyer-Moore</option>
+						<option>KMP</option>
+						<option>Regex</option>
+					</select>
+                    <br>
+                </div>
+                
+                <div class="col-md-8 col-md-8">
+                    <label for="output">CHATBOX</label>
+                    <div class="outbox">
+                        <?php
+                            $url = 'http://127.0.0.1:5000/';
+                            if (isset($_POST['inputbox']))
+                                {
+                                    tembak($url,$_POST);
+                                    exit();
+                                }
+
+                            function tembak($url,$data) {
+                                $ch = curl_init($url);
+
+                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+                                curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+                                $getres = curl_exec($ch); // Masih dalam bentuk json
+
+                                curl_close($ch);
+                                
+                                echo ($getres);
+                            }
+                        ?>
+                    </div>
+                    <br>
+                </div>
+
+                <div class="col-md-8 col-md-8">
+                    <div class="inputchat">
+                        <label for="inputchat">Text me : </label>
+                        <textarea input="text" name="inputbox" cols="100" rows="5"></textarea>
+                        <br>
+                    </div>
+                    <input type="submit" class="button_css">
+                </div>
+
+             </form>
         </div>
 
-        <?php
-
-            $url = 'http://127.0.0.1:5000/';
-            if (isset($_POST['inputbox']))
-                {
-                    tembak($url,$_POST);
-                    exit();
-                }
-
-            function tembak($url,$data) {
-                $ch = curl_init($url);
-
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-
-                $getres = curl_exec($ch); // Masih dalam bentuk json
-
-                curl_close($ch);
-                
-                echo ($getres);
-            } 
-        ?>
     </div>
 </body>
+
 </html>
+

@@ -1,0 +1,43 @@
+.outbox
+    {
+        position: static;
+        width: 750px;
+        height: 250px;
+        background: white;
+        border: 1.5px solid;
+        border-color: rgb(0,0,0);
+        margin: 0;
+    }
+
+.inputchat
+    {
+        margin: 0px 0px 0px 400px;
+
+    }
+
+body
+    {
+        margin-top: 10px;
+        background-color: #EEEEEE;
+    }
+
+.jumbotron
+    {
+        background-color: rgb(230, 230, 230);
+    }
+
+.button_css
+    {
+        width: 160px;
+        height: 40px;
+        margin: 0px 0px 30px 400px;
+    }
+
+select 
+    {
+        width: 100%;
+        padding: 10px 20px;
+        border: 1px solid;
+        border-radius: 5px;
+        background-color: #f1f1f1;
+    }
