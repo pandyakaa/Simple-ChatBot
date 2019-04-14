@@ -42,6 +42,11 @@ def randomQuest(ask,res,method) :
     else :
         print(res[temp][0])
 
+def randomQRegex(ask,res) :
+    temp = random.randint(0,len(res)-1)
+    print("Mungkin maksud Anda : ")
+    print(res[temp][0])
+
 if __name__ == "__main__":
 
     res = readData()
@@ -72,5 +77,5 @@ if __name__ == "__main__":
             foundregex = True
     
     if (not(foundregex)) :
-        print("Regex Not Found")
+        randomQRegex(ask,res)
     
