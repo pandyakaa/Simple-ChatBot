@@ -33,14 +33,15 @@ def KMP(pat,txt) :
 
     i = 0
     j = 0
+    found = False
 
-    while ( i < n ) :
+    while ( i < n and not(found)) :
         if (pat[j] == txt[i]) :
             i = i + 1
             j = j + 1
 
         if ( j == m ) :
-            return float(m/n*100)
+            found = True
 
         elif i < n and pat[j] != txt[i]: 
             if ( j != 0 ) : 
@@ -48,7 +49,10 @@ def KMP(pat,txt) :
             else: 
                 i = i + 1
     
-    return 0
+    if (found) :
+        return float(m/n*100) 
+    else :
+        return 0
 
 # Fungsi untuk menghitung persentasi substring yang sama antara pattern dengan txt
 def subsKMP(pat,txt) :

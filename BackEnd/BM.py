@@ -20,18 +20,22 @@ def BM(pat,txt) :
     res = preBM(pat)
 
     s = 0
-    while(s <= n-m): 
+    found = False
+    while(s <= n-m and not(found)): 
         j = m-1
   
         while (j>=0 and pat[j] == txt[s+j]) : 
             j = j - 1
 
         if (j<0): 
-            return float(m/n*100) 
+            found = True
         else: 
             s = s + max(1, j-res[ord(txt[s+j])]) 
     
-    return 0
+    if (found) :
+        return float(m/n*100)
+    else :
+        return 0
 
 # Fungsi untuk menghitung substring yang sama antara pattern dengan text
 def subsBM(pat,txt) :
