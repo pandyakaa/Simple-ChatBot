@@ -29,10 +29,10 @@
 
                 <div class="col-md-4 col-sm-4">
                     <label for="algorithmsel">Algorithm</label>
-                    <select class="select" id="select" form="main-form" name="algorithm">
-						<option>Boyer-Moore</option>
-						<option>KMP</option>
-						<option>Regex</option>
+                    <select class="select" name="algorithm">
+						<option value="BM">Boyer-Moore</option>
+						<option value="KMP">KMP</option>
+						<option value="Regex">Regex</option>
 					</select>
                     <br>
                 </div>
@@ -42,10 +42,9 @@
                     <div class="outbox">
                         <?php
                             $url = 'http://127.0.0.1:5000/';
-                            if (isset($_POST['inputbox']))
+                            if (isset($_POST['inputbox']) )
                                 {
                                     tembak($url,$_POST);
-                                    exit();
                                 }
 
                             function tembak($url,$data) {
@@ -58,7 +57,12 @@
 
                                 curl_close($ch);
                                 
-                                echo ($getres);
+                                $finalx = json_decode($getres);
+                                echo "User : ";
+                                echo $_POST['inputbox'];
+                                echo "<br>";
+                                echo "Cha Cha : ";
+                                echo $finalx->data;
                             }
                         ?>
                     </div>
@@ -71,9 +75,9 @@
                         <textarea input="text" name="inputbox" cols="100" rows="5"></textarea>
                         <br>
                     </div>
-                    <input type="submit" class="button_css">
                 </div>
 
+                <input type="submit" class="button_css">
              </form>
         </div>
 

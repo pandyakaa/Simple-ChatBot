@@ -47,35 +47,33 @@ def randomQRegex(ask,res) :
     print("Mungkin maksud Anda : ")
     print(res[temp][0])
 
-if __name__ == "__main__":
+def askMain(pat,res,method) :
 
-    res = readData()
     foundKMP = False
     foundBM = False
     foundregex = False
-    ask = input()
 
-    for i in range(len(res)) :
-        if (KMPmain(ask,res[i][0]) > 50 and not(foundKMP)) :
-            print(res[i][1])
-            foundKMP = True
+    if (method == 'KMP') :
+        for i in range(len(res)) :
+            if (KMPmain(pat,res[i][0]) > 50 and not(foundKMP)) :
+                return (res[i][1])
+
+        if (not(foundKMP)) :
+            randomQuest(pat,res,KMPmain)
     
-    if (not(foundKMP)) :
-        randomQuest(ask,res,KMPmain)
+    elif (method == 'BM') :
+        for i in range(len(res)) :
+            if (BMmain(pat,res[i][0]) > 50 and not(foundBM)) :
+                return (res[i][1])
+        
+        if (not(foundBM)) :
+            randomQuest(pat,res,BMmain)
     
-    for i in range(len(res)) :
-        if (BMmain(ask,res[i][0]) > 50 and not(foundBM)) :
-            print(res[i][1])
-            foundBM = True
-    
-    if (not(foundBM)) :
-        randomQuest(ask,res,BMmain)
-    
-    for i in range(len(res)) :
-        if (regexmain(ask,res[i][0]) and not(foundregex)) :
-            print(res[i][1])
-            foundregex = True
-    
-    if (not(foundregex)) :
-        randomQRegex(ask,res)
+    else :
+        for i in range(len(res)) :
+            if (regexmain(pat,res[i][0]) and not(foundregex)) :
+                return (res[i][1])
+        
+        if (not(foundregex)) :
+            randomQRegex(pat,res)
     
