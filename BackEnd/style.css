@@ -1,6 +1,7 @@
 .outbox
     {
         position: static;
+        overflow-y: scroll;
         width: 750px;
         height: 250px;
         background: white;
@@ -26,11 +27,17 @@ body
         background-color: rgb(230, 230, 230);
     }
 
+.display-3
+    {
+        font-style: italic;
+        margin: 50px 0px 0px 0px
+    }
+
 .button_css
     {
         width: 160px;
         height: 40px;
-        margin: 0px 0px 30px 400px;
+        margin: 0px 0px 30px 700px;
     }
 
 select 

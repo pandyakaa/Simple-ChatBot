@@ -41,17 +41,22 @@
                     <label for="output">CHATBOX</label>
                     <div class="outbox">
                         <?php
-                            $idx = 0;
-                            $arruser = array();
-                            $arrhasil = array();
+                            session_start();
+                            if (!isset($_SESSION['qna'])){
+                                $_SESSION['qna'] = array();
+                            }
+                            if (!isset($_SESSION['user'])){
+                                $_SESSION['user'] = array();
+                            }
+
                             $url = 'http://127.0.0.1:5000/';
+
                             if (isset($_POST['inputbox']) )
                                 {
                                     $res = findAnswer($url,$_POST);
-                                    $arrhasil[$idx] = $res;
-                                    $arruser[$idx] = $_POST['inputbox'];
-                                    $idx++;
-                                    printAnswer($arruser,$arrhasil);
+                                    array_push($_SESSION['qna'],$res); 
+                                    array_push($_SESSION['user'],$_POST['inputbox']);
+                                    printAnswer($_SESSION['user'],$_SESSION["qna"]);
                                 }
 
                             function findAnswer($url,$data) 
@@ -83,6 +88,7 @@
                                                     echo $arr2[$x]->data;
                                                     echo "<br>";
                                                 }
+                                            echo"<br>";
                                         }
                                 }
                         ?>
