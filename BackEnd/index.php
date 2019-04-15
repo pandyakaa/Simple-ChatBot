@@ -104,7 +104,9 @@
                     </div>
                 </div>
 
-                <input type="submit" class="button_css">
+                <div class="col-md-8 col-md-8">
+                <input type="submit" class="btn btn-default">
+                </div>
              </form>
         </div>
 
