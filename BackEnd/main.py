@@ -3,6 +3,8 @@ from regex import regexmain
 from BM import BMmain
 import random
 
+# Digunakan untuk membaca file eksternal
+# Sebagai representasi database pertanyaan dan jawaban
 def readData() :
 
     with open("question.txt") as f :
@@ -25,13 +27,13 @@ def readData() :
 
     return mat
 
+# Digunakan untuk me-return pertanyaan random
+# Untuk algoritma KMP dan BM
 def randomQuest(ask,res,method) :
-    max = 0
     temp = random.randint(0,len(res)-1)
     arrq = []
     for i in range(len(res)) :
         if (method(ask,res[i][0]) > 30 ) :
-            max = method(ask,res[i][0])
             arrq.append(i)
 
     tempres = [" "," "," "]
@@ -45,10 +47,13 @@ def randomQuest(ask,res,method) :
     else : 
         return ("Mungkin maksud kamu = " + res[temp][0])
 
+# Digunakan untuk me-return pertanyaan random
+# Untuk algoritma regex
 def randomQRegex(ask,res) :
     temp = random.randint(0,len(res)-1)
     return ("Mungkin maksud kamu = " + res[temp][0])
 
+# Akan dipanggil untuk melakukan proses string matching dan pencarian jawaban
 def askMain(pat,res,method) :
 
     foundKMP = False

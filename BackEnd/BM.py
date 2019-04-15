@@ -66,16 +66,24 @@ def subsBM(pat,txt) :
 
 # Fungsi untuk generate stopwords
 def generateStopWords(pat,txt) :
-    # Ambil Stopword bawaan
-    stop_factory = StopWordRemoverFactory().get_stop_words()
-    more_stopwords = [' ?' , '?', ' .', '.' , ' ,' , ',']
-    # Merge stopword
-    data = stop_factory + more_stopwords
+	# Ambil Stopword bawaan
+	stop_factory = StopWordRemoverFactory().get_stop_words()
+	more_stopwords = [' ?' , '?', ' .', '.' , ' ,' , ',']
+	# Merge stopword
+	data = stop_factory + more_stopwords
 
-    dictionary = ArrayDictionary(data)
-    str = StopWordRemover(dictionary)
+	dictionary = ArrayDictionary(data)
+	str = StopWordRemover(dictionary)
 
-    return str.remove(pat),str.remove(txt)
+	temppat = str.remove(pat)
+	if (temppat == '' or temppat == None) :
+		temppat = pat
+
+	temptxt = str.remove(txt)
+	if (temptxt == '' or temptxt == None) :
+		temptxt = txt 
+
+	return temppat,temptxt
 
 # Fungsi yang akan dipanggil
 def BMmain(pat,txt) :
@@ -84,10 +92,3 @@ def BMmain(pat,txt) :
         return (BM(pat,txt))
     else :
         return (subsBM(pat,txt))
-
-# Main Programs
-if __name__ == "__main__":
-    txt = "Apa ibukota negara Filipina?"
-    pat = "Apa ibukota Filipina?"
-    pat,txt = generateStopWords(pat,txt)
-    print(subsBM(pat,txt))

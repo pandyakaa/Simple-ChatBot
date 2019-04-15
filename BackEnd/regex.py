@@ -20,7 +20,15 @@ def generateStopWords(pat,txt) :
 	dictionary = ArrayDictionary(data)
 	str = StopWordRemover(dictionary)
 
-	return str.remove(pat),str.remove(txt)
+	temppat = str.remove(pat)
+	if (temppat == '' or temppat == None) :
+		temppat = pat
+
+	temptxt = str.remove(txt)
+	if (temptxt == '' or temptxt == None) :
+		temptxt = txt 
+
+	return temppat,temptxt
 
 # Fungsi untuk melakukan pengecekan setiap katanya
 def subsregex(pat,txt) :
@@ -36,15 +44,7 @@ def subsregex(pat,txt) :
 
 # Fungsi yang akan dipanggil 
 def regexmain(pat,txt) :
-	pat,txt = generateStopWords(pat,txt)
 	if (regex(pat,txt)) :
 		return True
 	else :
 		return (subsregex(pat,txt))
-
-# Main Programs
-if __name__ == "__main__":
-	txt = "Apa ibukota negara Filipina?"
-	pat = "Apa ibukota Filipina ?"
-	pat,txt = generateStopWords(pat,txt)
-	print(subsregex(pat,txt))

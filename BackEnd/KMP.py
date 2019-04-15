@@ -1,6 +1,6 @@
 # Program untuk striing matching dengan menggunakan algoritma KMP
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory, StopWordRemover, ArrayDictionary
-
+ 
 # Sebelum dijalankan, akan melakukan pre-processing dengan menyiapkan KMP Border Function
 # Digunakan untuk mencari suffix yang juga prefix dari sebuah string
 def preKMP(pat) :
@@ -42,6 +42,7 @@ def KMP(pat,txt) :
 
         if ( j == m ) :
             found = True
+            j = res[j-1]
 
         elif i < n and pat[j] != txt[i]: 
             if ( j != 0 ) : 
@@ -83,16 +84,24 @@ def subsKMP(pat,txt) :
     
 # Fungsi untuk generate stopwords
 def generateStopWords(pat,txt) :
-    # Ambil Stopword bawaan
-    stop_factory = StopWordRemoverFactory().get_stop_words()
-    more_stopwords = [' ?' , '?', ' .', '.' , ' ,' , ',']
-    # Merge stopword
-    data = stop_factory + more_stopwords
+	# Ambil Stopword bawaan
+	stop_factory = StopWordRemoverFactory().get_stop_words()
+	more_stopwords = [' ?' , '?', ' .', '.' , ' ,' , ',']
+	# Merge stopword
+	data = stop_factory + more_stopwords
 
-    dictionary = ArrayDictionary(data)
-    str = StopWordRemover(dictionary)
+	dictionary = ArrayDictionary(data)
+	str = StopWordRemover(dictionary)
 
-    return str.remove(pat),str.remove(txt)
+	temppat = str.remove(pat)
+	if (temppat == '' or temppat == None) :
+		temppat = pat
+
+	temptxt = str.remove(txt)
+	if (temptxt == '' or temptxt == None) :
+		temptxt = txt 
+
+	return temppat,temptxt
 
 # Fungsi yang akan dipanggil
 def KMPmain(pat,txt) :
@@ -102,10 +111,3 @@ def KMPmain(pat,txt) :
         return KMP(pat,txt)
     else : 
         return subsKMP(pat,txt)
-        
-# Main Programs
-if __name__ == "__main__":
-    txt = "Apa ibukota negara Filipina?"
-    pat = "Apa ibukota Filipina?"
-    pat,txt = generateStopWords(pat,txt)
-    print(max(KMP(pat,txt),subsKMP(pat,txt)))

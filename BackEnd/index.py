@@ -1,13 +1,10 @@
-from main import *
+from main import askMain, readData
 from flask import Flask,request
 import json
 
 app = Flask(__name__)
 
 res = readData()
-
-def findAnswer(pat,res,method) :
-    askMain(pat,res,method)
 
 @app.route('/',methods=['POST'])
 def index() :
