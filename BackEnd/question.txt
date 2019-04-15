@@ -1,8 +1,8 @@
 Siapa namamu ?
 Siapa kamu ?
-Kamu dibuat oleh siapa ?
 Tanggal berapa kamu lahir ?
 Apa yang bisa kamu lakukan ?
+Bagaimana cara kerjamu ?
 Apa itu python ?
 Kenapa python ?
 Bagaimana cara menginstall python ?

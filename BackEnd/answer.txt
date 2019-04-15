@@ -1,8 +1,8 @@
 Namaku adalah ChaCha
 Aku adalah Chatbot
-Oleh kelompok IP 4 menanti
 Tanggal 13 April 2019
 Aku bisa menjelaskan apa itu python
+Aku akan menerima pertanyaan dari kamu, lalu akan aku cari jawabannya dalam otakku >.<
 Python diciptakan oleh Guido van Rossum pertama kali di Scitchting Mathematisch Centrum (CWI) di Belanda pada awal tahun 1990-an. Bahasa python terinspirasi dari bahasa pemrograman ABC. Sampai sekarang, Guido masih menjadi penulis utama untuk python, meskipun bersifat open source sehingga ribuan orang juga berkontribusi dalam mengembangkannya.
 Python adalah bahasa pemrograman interpretatif multiguna dengan filosofi perancangan yang berfokus pada tingkat keterbacaan kode. Python diklaim sebagai bahasa yang menggabungkan kapabilitas, kemampuan, dengan sintaksis kode yang sangat jelas, dan dilengkapi dengan fungsionalitas pustaka standar yang besar serta komprehensif.
 Gunakan sudo apt-get install python3 untuk versi 3.xx, gunakan sudo apt-get install python untuk versi 2.xx
