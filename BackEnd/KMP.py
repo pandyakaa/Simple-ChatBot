@@ -60,6 +60,7 @@ def subsKMP(pat,txt) :
     substring = ''
     i = 0
     temp = 0
+    m = len(txt)
 
     if (pat[len(pat)-1] != ' ') :
         pat = pat + ' '
@@ -78,7 +79,7 @@ def subsKMP(pat,txt) :
             substring = ''
         i = i + 1
 
-    final = float(temp/len(txt))*100
+    final = float(temp/m)*100
 
     return final
     
