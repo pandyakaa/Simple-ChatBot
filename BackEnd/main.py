@@ -43,7 +43,7 @@ def randomQuest(ask,res,method) :
             if ( i < 3 ) :
                 tempres[i] = (str(i+1) + ". " + res[arrq[i]][0])
         
-        return ("Mungkin maksud kamu = " + tempres[0] + " " + tempres[1] + " " + tempres[2])
+        return ("Mungkin maksud kamu = \n \n" + tempres[0] + "\n \n" + tempres[1] + "\n \n" + tempres[2])
     else : 
         return ("Mungkin maksud kamu = " + res[temp][0])
 
