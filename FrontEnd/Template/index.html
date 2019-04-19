@@ -6,11 +6,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+    
     <div class="name">
         <p>
             ChaChaChatBox
-        </p>
+        </p>    
     </div>
+    <select class="select" required>
+        <option value="" hidden>Select Algorithm</option>
+        <option value="BM">Boyer-Moore</option>
+        <option value="KMP">KMP</option>
+        <option value="Regex">Regex</option>
+    </select>
     <div id = "container">
         <div class="gif">
             <img src="bot.gif" width = 200 height = 240 />

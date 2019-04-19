@@ -9,7 +9,7 @@ body {
 }
 .chatbox {
     display: inline-block;
-    float: left;
+    
     width: 500px;
     min-width: 390px;
     height: 600px;
@@ -124,4 +124,25 @@ body {
     margin-left: 20%;
     margin-top: 24%;
     float: left;
+}
+.select {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color : rgba(46, 48, 48, 0.541);
+    font-size: 18px;
+    margin-left: 475px;
+    width: 500px;
+    height: 40px;
+    border-color: rgba(162, 181, 184, 0.541); 
+    border-radius: 20px;
+    border-width: 2px;
+ 
+    -webkit-transition: background .2s ease;
+    -moz-transform: background .2s ease;
+    -o-transition: background .2s ease;
+    -webkit-transform: background .2s border;
+}
+.select:hover {
+    border-color: rgba(92, 184, 196, 0.541);
+    border-width: 3px;
+    
 }
