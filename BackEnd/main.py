@@ -62,7 +62,7 @@ def askMain(pat,res,method) :
 
     if (method == 'KMP') :
         for i in range(len(res)) :
-            if (KMPmain(pat,res[i][0]) > 70 and not(foundKMP)) :
+            if (KMPmain(pat,res[i][0]) > 90 and not(foundKMP)) :
                 return (res[i][1])
 
         if (not(foundKMP)) :
@@ -70,7 +70,7 @@ def askMain(pat,res,method) :
     
     elif (method == 'BM') :
         for i in range(len(res)) :
-            if (BMmain(pat,res[i][0]) > 70 and not(foundBM)) :
+            if (BMmain(pat,res[i][0]) > 90 and not(foundBM)) :
                 return (res[i][1])
         
         if (not(foundBM)) :
