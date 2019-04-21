@@ -77,7 +77,7 @@
         <div id = "container">
 
             <div class="gif">
-                <img src="bot.gif" width = 200 height = 240 />
+                <img src="gif.gif" width = 200 height = 240 />
             </div>
 
             <div class="chatbox">
