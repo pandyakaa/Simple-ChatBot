@@ -22,7 +22,7 @@
                     array_push($_SESSION['qna'], "Hello, may I help you ? :)");
                     $_SESSION['user'] = array();
                 }
-            else
+            else if ($_POST['inputbox'] !== '')
                 {
                     $res = findAnswer($url,$_POST);
                     array_push($_SESSION['qna'],$res); 
@@ -30,7 +30,7 @@
                     unset($_POST);
                     header("Location: ".$_SERVER['PHP_SELF']);
                 }
-        }
+            }
 
     function findAnswer($url,$data) 
         {
@@ -48,7 +48,6 @@
             return $finalx;
         }
 
-        unset($_POST);
 ?>
 
 <!DOCTYPE html>
