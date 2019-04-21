@@ -27,6 +27,8 @@
                     $res = findAnswer($url,$_POST);
                     array_push($_SESSION['qna'],$res); 
                     array_push($_SESSION['user'],$_POST['inputbox']);
+                    unset($_POST);
+                    header("Location: ".$_SERVER['PHP_SELF']);
                 }
         }
 
