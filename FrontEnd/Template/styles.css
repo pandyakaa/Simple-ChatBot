@@ -41,7 +41,7 @@ body {
 .chat .user-pic {
     width: 60px;
     height: 60px;
-    background: #ccc;
+    
     border-radius: 50%;
     overflow: hidden;
 }
@@ -50,6 +50,7 @@ body {
     align-content: center;
     box-sizing: border-box;
 }
+
 .chat .chat-message {
     width: 75%;
     max-width: 100%;
@@ -62,9 +63,9 @@ body {
 .self .chat-message {
     background: #6ba3b1;
 }
-.bot .chat-message {
+.bot .chat-message 
+{
     background: #ffffff;
-    order: -1;
 }
 .chat-form {
     margin-top: 20px;
