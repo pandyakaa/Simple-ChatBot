@@ -86,7 +86,7 @@
 
                             <div class="chat bot">
                                     <div class="user-pic">
-                                        <!img src="1.jpg">
+                                        <img src="bot_pic.gif">
                                     </div>
                                     <p class="chat-message">
                                         <?php echo($_SESSION['qna'][0]); ?>
@@ -109,7 +109,7 @@
 
                                                 <div class="chat bot">
                                                     <div class="user-pic">
-                                                        <!img src="1.jpg">
+                                                        <img src="bot_pic.gif">
                                                     </div>
                                                     <p class="chat-message">
                                                         <?php echo($_SESSION['qna'][$x+1]->data); ?>
