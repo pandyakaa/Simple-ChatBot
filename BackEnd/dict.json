@@ -1,0 +1,121 @@
+{
+    "membentuk":
+        [
+            "membangun"
+        ],
+    "membikin":
+        [
+            "membangun"
+        ],
+    "menciptakan":["membuat"], 
+    "mendirikan":["membuat"],
+    "menegakkan" :["membuat"],
+    "menyusun" :["membuat"],
+    "merentangkan" :["membuat"], 
+    "mewujudkan" :["membuat"],
+    "membina" :["membuat"],
+    "memupuk"  :["membuat"],
+    "mengembangkan" :["membuat"], 
+    "menjalin" :["membuat"],
+    "a" :["membuat"],
+
+    "becus":["bisa"],
+    "cakap":["bisa"],
+    "dapat":["bisa"],
+    "kuasa":["bisa"],
+    "larat":["bisa"],
+    "mampu":["bisa"], 
+    "pandai":["bisa"],
+    "sanggup":["bisa"], 
+    "racun":["bisa"],
+
+    "perbuat":
+         [
+            "lakukan"
+        ],
+    "memasang":   
+         [
+            "menginstall"
+        ]
+     ,
+
+     "minimum":["minimal"], 
+     "paling tidak":["minimal"],
+     "sedikitnya":["minimal"],
+     "sekurang-kurangnya":["minimal"],
+
+     "kini":["sekarang"],
+     "masa ini":["sekarang"],
+     "saat ini":["sekarang"],
+     "waktu ini":["sekarang"],
+
+    "lubang hitam":   
+        [
+            "blackhole"
+        ],
+
+    "perempuan":["wanita"],
+    "betina":["wanita"],
+    "cewek":["wanita"],
+
+    "adam":["pria"],
+    "laki-laki":["pria"],
+    "lanang":["pria"], 
+    "lelaki":["pria"], 
+    "maskulin":["pria"],
+    "cowok":["pria"],
+    "cowo":["pria"],
+
+    "tarikh":["tahun"],
+    "warsa":["tahun"],
+    
+    "memakai":["menggunakan"],
+    "memanfaatkan":["menggunakan"], 
+    "membonceng":["menggunakan"], 
+    "memerlukan":["menggunakan"], 
+    "menghabiskan":["menggunakan"], 
+    "menyedot":["menggunakan"], 
+    "mengonsumsi":["menggunakan"], 
+    "nunggangi":["menggunakan"],
+
+    "anda":["kamu"],
+    "awak":["kamu"], 
+    "engkau":["kamu"], 
+    "kau":["kamu"], 
+    "sampeyan":["kamu"], 
+    "saudara":["kamu"], 
+    "sira":["kamu"], 
+    "situ ":["kamu"],
+    
+    "terhampir":["terdekat"],
+    "terdamping":["terdekat"],
+
+    "kreator":["pembuat"],
+    "pelaksana":["pembuat"], 
+    "pembentuk":["pembuat"], 
+    "pencipta":["pembuat"], 
+    "penggarap":["pembuat"],  
+    "penggubah":["pembuat"],  
+    "penghasil":["pembuat"],  
+    "penyelenggara":["pembuat"],  
+    "penyusun":["pembuat"],  
+    "perakit":["pembuat"],  
+    "pereka cipta":["pembuat"],  
+    "produsen":["pembuat"], 
+
+    "melahirkan":["membuat"],
+    "melaksanakan":["membuat"], 
+    "melakukan":["membuat"], 
+    "melancarkan":["membuat"], 
+    "melangsung":["membuat"],
+    "membangun":["membuat"],
+
+    "aktor":["pemain"],
+    "anggota":["pemain"],
+    "kontestan":["pemain"],
+    "pelaku":["pemain"],
+    "pemeran":["pemain"]
+    
+    }
+    
+ 

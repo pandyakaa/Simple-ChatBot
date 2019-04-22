@@ -2,6 +2,7 @@ from KMP import KMPmain
 from regex import regexmain
 from BM import BMmain
 import random
+import json
 
 # Digunakan untuk membaca file eksternal
 # Sebagai representasi database pertanyaan dan jawaban
@@ -26,6 +27,20 @@ def readData() :
         mat[i].append(ans[i])
 
     return mat
+
+# Digunakan untuk load JSON yang berisi sinonim
+def loadJSON():	
+	with open('dict.json') as data_file:
+		data = json.load(data_file)
+
+	return data
+
+# Digunakan untuk mendapatkan apakah sinonim ada di database
+def getSinonim(word,datasin):
+	if word in datasin.keys():
+		return datasin[word]
+	else:
+		return []
 
 # Digunakan untuk me-return pertanyaan random
 # Untuk algoritma KMP dan BM
@@ -57,8 +72,12 @@ def randomQRegex(ask,res) :
 def askMain(pat,res,method) :
 
     foundKMP = False
+    foundKMPsinon = False
     foundBM = False
+    foundBMsinon = False
     foundregex = False
+    foundregexsinon = False
+    sinonim = loadJSON()
 
     if (method == 'KMP') :
         for i in range(len(res)) :
@@ -66,14 +85,38 @@ def askMain(pat,res,method) :
                 return (res[i][1])
 
         if (not(foundKMP)) :
+            temp = pat.split(" ")
+            for words  in temp :
+                listsin = getSinonim(words,sinonim)
+                if (len(listsin) != 0 ) :
+                    for sinon in listsin :
+                        for i in range(len(res)) :
+                            tempp = pat
+                            ask = tempp.replace(words,sinon)
+                            if (KMPmain(ask,res[i][0]) > 90 and foundKMPsinon == False) :
+                                return (res[i][1])
+        
+        if (not(foundKMPsinon)) :
             return randomQuest(pat,res,KMPmain)
-    
+
     elif (method == 'BM') :
         for i in range(len(res)) :
             if (BMmain(pat,res[i][0]) > 90 and not(foundBM)) :
                 return (res[i][1])
         
         if (not(foundBM)) :
+            temp = pat.split(" ")
+            for words  in temp :
+                listsin = getSinonim(words,sinonim)
+                if (len(listsin) != 0 ) :
+                    for sinon in listsin :
+                        for i in range(len(res)) :
+                            tempp = pat
+                            ask = tempp.replace(words,sinon)
+                            if (BMmain(ask,res[i][0]) > 90 and foundBMsinon == False) :
+                                return (res[i][1])
+        
+        if (not(foundBMsinon)) :
             return randomQuest(pat,res,BMmain)
     
     else :
@@ -82,5 +125,16 @@ def askMain(pat,res,method) :
                 return (res[i][1])
         
         if (not(foundregex)) :
+            temp = pat.split(" ")
+            for words  in temp :
+                listsin = getSinonim(words,sinonim)
+                if (len(listsin) != 0 ) :
+                    for sinon in listsin :
+                        for i in range(len(res)) :
+                            tempp = pat
+                            ask = tempp.replace(words,sinon)
+                            if (regexmain(ask,res[i][0]) == True and foundregexsinon == False) :
+                                return (res[i][1])
+        
+        if (not(foundregexsinon)) :
             return randomQRegex(pat,res)
-    
