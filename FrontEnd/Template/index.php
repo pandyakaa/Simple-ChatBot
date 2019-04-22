@@ -54,11 +54,12 @@
 <html>
 <head>
     <title>Flat ChatBox</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Neucha|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div class="name">
         <p>
             ChaChaChatBox
