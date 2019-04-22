@@ -3,17 +3,23 @@ from flask import Flask,request
 import json
 
 app = Flask(__name__)
+# Deklarasi penggunaan Flask
 
 res = readData()
+# Membaca file eksternal untuk representasi database
 
 @app.route('/',methods=['POST'])
-def index() :
-    body = request.form
-    selectedalgo = body['algorithm']
-    pat = body['inputbox']
+# Route flask berada pada index, sehingga tidak perlu menjalankan direktori lain untuk menggunakannya
 
-    result = askMain(pat,res,selectedalgo)
-    return json.dumps({'data':result})
+def index() :
+    body = request.form # Untuk memasukkan form dari HTML ke python
+    selectedalgo = body['algorithm'] # Assign selected algorithm pada HTML ke variabel selected algo
+    pat = body['inputbox'] # Assign query pengguna ke dalam variabel pat
+    
+
+    result = askMain(pat,res,selectedalgo) # Memanggil fungsi utama untuk string matching
+    return json.dumps({'data':result}) # Return dalam bentuk JSON
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000, host='127.0.0.1')
+    # Start Flask
+    app.run(debug=True)
